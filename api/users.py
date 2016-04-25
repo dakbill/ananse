@@ -1,10 +1,16 @@
 import json
 from py2neo import Graph
+from pymongo import MongoClient
 import webapp2
 
 remote_graph = Graph(
     'http://xcite_graph_db:uJg6WvK3AFjzRukDKZWd@xcitegraphdb.sb02.stations.graphenedb.com:24789/db/data/'
 )
+
+client = MongoClient()
+db = client['ananse']
+
+User = db['user']
 
 
 class UsersHandler(webapp2.Handler):
