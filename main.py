@@ -14,19 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import os
 import sys
-from api.items import ItemsHandler
-from api.spider import RulesHandler
-from api.users import UsersHandler
+import webapp2
 
 sys.path.insert(0, 'libs')
 
+from controllers.items import ItemsHandler
+from controllers.spider import RulesHandler, IndexesHandler
+from controllers.users import UsersHandler
 from google.appengine.ext.webapp import template
-from py2neo import Graph
-from elasticsearch import Elasticsearch
-
-import webapp2
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -40,4 +38,5 @@ app = webapp2.WSGIApplication([
                                   ('/items', ItemsHandler),
                                   ('/rules', RulesHandler),
                                   ('/users', UsersHandler),
+                                  ('/index', IndexesHandler),
                               ], debug=True)
